@@ -75,6 +75,9 @@ export async function setupTryOnViewer() {
 
     ring4.visible = false;
 
+
+    console.log('viewer.scene', viewer.scene);
+
     if (!viewer.scene.environment) await viewer.setEnvironmentMap(gemEnv);
 
     viewer.scene.addEventListener('addSceneObject', () => {
@@ -106,24 +109,21 @@ export async function setupTryOnViewer() {
             ring2.visible = false;
             // ring3.visible = false;
             ring4.visible = false;
+            viewer.scene.setDirty({ sceneUpdate: true });
+            // viewer.scene.renderer.refreshPipeline();
         });
 
-        document.getElementById('model-2').addEventListener('click', () => {
-            console.log('Loading Model 2...');
-            // Add your logic to load Model 2 here
-            ring1.visible = false;
-            ring2.visible = true;
-            // ring3.visible = false;
-            ring4.visible = false;
-        });
 
         document.getElementById('model-3').addEventListener('click', () => {
             console.log('Loading Model 3...');
             // Add your logic to load Model 3 here
+
             ring1.visible = false;
-            ring2.visible = false;
+            ring2.visible = true;
             // ring3.visible = true;
-            ring4.visible = true;
+            ring4.visible = false
+            viewer.scene.setDirty({ sceneUpdate: true });
+            // viewer.scene.renderer.refreshPipeline();
         });
 
         document.getElementById('model-4').addEventListener('click', () => {
@@ -133,6 +133,8 @@ export async function setupTryOnViewer() {
             ring2.visible = false;
             // ring3.visible = false;
             ring4.visible = true;
+            viewer.scene.setDirty({ sceneUpdate: true });
+            // viewer.scene.renderer.refreshPipeline();
         });
 
         const startAr = document.getElementById('start-ar');
