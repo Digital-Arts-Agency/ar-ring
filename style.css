@@ -42,10 +42,10 @@ body {
 
 
 #canvas-container {
-    width: calc(100% - 2rem);
-    height: calc(100% - 2rem);
+    width: 100%;
+    height: 100%;
     overflow: hidden;
-    margin: 1rem;
+    margin: 0;
     border-radius: 0.5rem;
 }
 
@@ -119,12 +119,47 @@ body {
     left: 10px;
 }
 
+#loader-assets {
+    height: 100%;
+    background-color: #f6f6f6;
+    width: 100%;
+    position: absolute;
+    display: flex;          /* Add this line */
+    justify-content: center;
+    align-items: center;    /* Add this line */
+    z-index: 2000000;
+    }
+    
+    #loader-assets p{
+    text-align: center;
+    /* Font size 18px in em if size 16px */
+    font-size: 1.125em;
+    }
+    
+#logo {
+    display: none;
+    width: 350px;
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    z-index: 1000000;
+    padding: 10px;
+}
 @media only screen and (max-width: 768px) {
     #canvas-container {
         width: 100% !important;
         height: 100% !important;
         margin: 0;
         border-radius: 0;
+    }
+
+    #logo {
+        width: 250px;
+        position: absolute;
+        bottom: 0.5rem;
+        left: 0.5rem;
+        z-index: 1000000;
+        padding: 10px;
     }
 }
 

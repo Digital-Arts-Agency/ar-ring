@@ -6,7 +6,7 @@ import { setupTryOnViewer } from './setupViewer.js';
 const url = new URL(window.location.href);
 const webGiVersion = url.searchParams.get('webgi') || '0.9.14';
 const ijVtoVersion = url.searchParams.get('vto') || (window.location.origin === 'https://releases.ijewel3d.com' ? window.location.pathname.split('/')[3] : '0.0.16');
-
+document.getElementById('loader-assets').style.display = 'flex';
 // Load the main WebGi script and then ij_vto
 loadScript(`https://dist.pixotronics.com/webgi/runtime/bundle-${webGiVersion}.js`)
     .then(() => {
@@ -15,6 +15,11 @@ loadScript(`https://dist.pixotronics.com/webgi/runtime/bundle-${webGiVersion}.js
     })
     .then(() => {
         setupTryOnViewer(); // Call setupTryOnViewer after all scripts are loaded
+
+        setTimeout(() => {
+            document.getElementById('loader-assets').style.display = 'none';
+        }, 2000);
+
     })
     .catch((error) => {
         console.error('Error loading scripts or initializing viewer:', error);
