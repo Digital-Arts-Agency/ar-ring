@@ -49,7 +49,14 @@ body {
     border-radius: 0.5rem;
 }
 
-#start-ar, #flip-camera, #save-image {
+#exit-ar {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 1000000;
+}
+
+#start-ar, #flip-camera, #save-image, #exit-ar {
     color: white;
     text-align: center;
     font-size: 11px;

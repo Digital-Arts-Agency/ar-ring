@@ -13,6 +13,7 @@ export async function setupTryOnViewer() {
         VignettePlugin,
         DropzonePlugin,
         DiamondPlugin,
+        CameraView,
     } = window.webgi;
 
     const { RingTryonPlugin, WebCameraBackgroundPlugin, WebCameraPlugin } = window['ij_vto'];
@@ -22,6 +23,10 @@ export async function setupTryOnViewer() {
         canvas: document.getElementById('webgi-canvas'),
     });
     viewer.renderer.displayCanvasScaling = 2;
+
+    console.log('viewer', viewer);
+
+
 
     // Add and setup plugins
     await addBasePlugins(viewer, { interactionPrompt: false });
@@ -75,8 +80,10 @@ export async function setupTryOnViewer() {
 
     ring4.visible = false;
 
-
+    console.log('loaded models', ring1, ring2, ring4);
     console.log('viewer.scene', viewer.scene);
+
+
 
     if (!viewer.scene.environment) await viewer.setEnvironmentMap(gemEnv);
 
@@ -94,6 +101,16 @@ export async function setupTryOnViewer() {
     if (modelPath) {
         await viewer.load(modelPath);
         await viewer.load(modelPath.replace('.glb', '.json'));
+
+        let view = new CameraView();
+        view.position = new Vector3(5, 5, 5);
+        view.up = new Vector3(0, 1, 0);
+        let camViewPlugin = viewer.plugins.CameraViews;
+        camViewPlugin.camViews.push(view)
+        console.log('view', view);
+        console.log('camViewPlugin', camViewPlugin);
+        await camViewPlugin.animateToView(view, 500);
+
 
         // Toggle the visibility of the model buttons when the Ring Models button is clicked
         document.getElementById('ring-models-button').addEventListener('click', () => {
@@ -140,17 +157,21 @@ export async function setupTryOnViewer() {
         const startAr = document.getElementById('start-ar');
         const flipCamera = document.getElementById('flip-camera');
         const saveImage = document.getElementById('save-image');
+        const exitAr = document.getElementById('exit-ar');
+
 
         // Make sure the "Start AR" button is visible initially, and others are hidden
         startAr.style.display = 'block';
         flipCamera.style.display = 'none';
         saveImage.style.display = 'none';
+        exitAr.style.display = 'none';
 
         startAr.onclick = () => {
             if (!tryon.running) tryon.start();
             startAr.style.display = 'none';
             flipCamera.style.display = 'block';
             saveImage.style.display = 'block';
+            exitAr.style.display = 'block';
 
             // Hide the model buttons when AR is started
             const modelButtons = document.getElementById('model-buttons');
@@ -161,6 +182,24 @@ export async function setupTryOnViewer() {
 
         flipCamera.onclick = () => tryon.flipCamera();
         saveImage.onclick = () => tryon.saveImage();
+
+        exitAr.onclick = () => {
+            tryon.stop();
+            startAr.style.display = 'block';
+            flipCamera.style.display = 'none';
+            saveImage.style.display = 'none';
+            exitAr.style.display = 'none';
+            window.location.reload();
+
+            viewer.scene.setDirty({ sceneUpdate: true });
+            viewer.scene.renderer.refreshPipeline();
+
+            // Show the model buttons when AR is exited
+            const modelButtons = document.getElementById('model-buttons');
+            const ringModelsButton = document.getElementById('ring-models-button');
+            // modelButtons.style.display = 'block';  // Show the model buttons
+            ringModelsButton.style.display = 'block';  // Show the Ring Models button
+        };
     } else if (!editMode) {
         alert('No model set to load');
     }
