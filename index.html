@@ -57,7 +57,7 @@
             // add and setup plugins
             await addBasePlugins(viewer, { interactionPrompt: false });
             const diamondPlugin = await viewer.addPlugin(DiamondPlugin);
-            await viewer.load("https://rio-assets.s3.eu-west-2.amazonaws.com/rings/high-quality.glb")
+            // await viewer.load("https://rio-assets.s3.eu-west-2.amazonaws.com/rings/high-quality.glb")
             // for releases.ijewel3d.com
             diamondPlugin.setKey('KQAK6AGRQX5SGBAEQ4MWPM5QNWJN2AP2-B2CRTBZ9TQ');
 
@@ -113,7 +113,7 @@
             });
 
             const modelPath = getUrlQueryParam('m') || getUrlQueryParam('model')
-                || (editMode ? 'https://rio-assets.s3.eu-west-2.amazonaws.com/rings/high-quality.glb' : 'https://rio-assets.s3.eu-west-2.amazonaws.com/rings/high-quality.glb')
+                || (editMode ? 'https://rio-assets.s3.eu-west-2.amazonaws.com/rings/high-quality+(1).glb' : 'https://rio-assets.s3.eu-west-2.amazonaws.com/rings/high-quality+(1).glb')
 
 
             if (modelPath) {
