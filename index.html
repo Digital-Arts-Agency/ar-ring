@@ -2,20 +2,28 @@
 <html lang="en">
 
 <head>
-    <title>iJewel Virtual Tryon Ring</title>
+    <title>Rio AR Ring</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <link rel="stylesheet" href="style.css">
-
-    <script>
-    </script>
 </head>
 
 <body>
     <div id="canvas-container" style="position: relative">
         <canvas id="webgi-canvas" style="position: absolute; height: 100%; width: 100%"></canvas>
 
-        <!-- Controls always present in the HTML -->
+        <!-- Ring Models button on the left -->
+        <button id="ring-models-button">Ring Models</button>
+
+        <!-- Hidden Model buttons -->
+        <div id="model-buttons">
+            <button id="model-1">Model 1</button>
+            <button id="model-2">Model 2</button>
+            <button id="model-3">Model 3</button>
+            <button id="model-4">Model 4</button>
+        </div>
+
+        <!-- Controls already present -->
         <div id="controls"
             style="position: absolute; bottom: 0.5rem; right: 0.5rem; display: flex; flex-direction: row; gap: 0.5rem;">
             <button id="start-ar">Start AR</button>
@@ -23,12 +31,14 @@
             <button id="save-image" style="display: none;">Save Image</button>
         </div>
     </div>
+
     <script type="module" defer src="script.js"></script>
     <script defer
         src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
         integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
         data-cf-beacon='{"rayId":"8c5150243c9e5b4e","version":"2024.8.0","r":1,"token":"338ab206732e49a1939a0da8a2024d1a","serverTiming":{"name":{"cfExtPri":true,"cfL4":true}}}'
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>
