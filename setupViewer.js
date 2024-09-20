@@ -67,12 +67,12 @@ export async function setupTryOnViewer() {
 
     // Load models
     let ring1 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/ring1-not-rio.glb');
-    let ring2 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/ring3.glb');
-    let ring3 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/ring2.glb');
+    // let ring2 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/ring3.glb');
+    let ring2 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/ring2.glb');
     let ring4 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/ring4.glb');
     ring1.visible = true;
     ring2.visible = false;
-    ring3.visible = false;
+
     ring4.visible = false;
 
     if (!viewer.scene.environment) await viewer.setEnvironmentMap(gemEnv);
@@ -104,7 +104,7 @@ export async function setupTryOnViewer() {
             // Add your logic to load Model 1 here
             ring1.visible = true;
             ring2.visible = false;
-            ring3.visible = false;
+            // ring3.visible = false;
             ring4.visible = false;
         });
 
@@ -113,7 +113,7 @@ export async function setupTryOnViewer() {
             // Add your logic to load Model 2 here
             ring1.visible = false;
             ring2.visible = true;
-            ring3.visible = false;
+            // ring3.visible = false;
             ring4.visible = false;
         });
 
@@ -122,8 +122,8 @@ export async function setupTryOnViewer() {
             // Add your logic to load Model 3 here
             ring1.visible = false;
             ring2.visible = false;
-            ring3.visible = true;
-            ring4.visible = false;
+            // ring3.visible = true;
+            ring4.visible = true;
         });
 
         document.getElementById('model-4').addEventListener('click', () => {
@@ -131,7 +131,7 @@ export async function setupTryOnViewer() {
             // Add your logic to load Model 4 here
             ring1.visible = false;
             ring2.visible = false;
-            ring3.visible = false;
+            // ring3.visible = false;
             ring4.visible = true;
         });
 
