@@ -71,10 +71,10 @@ export async function setupTryOnViewer() {
     }
 
     // Load models
-    let ring1 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/rio-ring3.glb');
+    let ring1 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/rio-new-mode-1.glb');
     // let ring2 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/ring3.glb');
-    let ring2 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/rio-ring2.glb');
-    let ring4 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/rio-ring1.glb');
+    let ring2 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/rio-new-mode-2.glb');
+    let ring4 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/rio-new-mode-3.glb');
     ring1.visible = true;
     ring2.visible = false;
 
@@ -96,7 +96,7 @@ export async function setupTryOnViewer() {
         shadow.userData.renderToDepth = false;
     });
 
-    const modelPath = getUrlQueryParam('m') || getUrlQueryParam('model') || 'https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/rio-ring3.glb';
+    const modelPath = getUrlQueryParam('m') || getUrlQueryParam('model') || 'https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/rio-new-mode-1.glb';
 
     if (modelPath) {
         await viewer.load(modelPath);
