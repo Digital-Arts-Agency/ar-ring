@@ -96,7 +96,7 @@ export async function setupTryOnViewer() {
         shadow.userData.renderToDepth = false;
     });
 
-    const modelPath = getUrlQueryParam('m') || getUrlQueryParam('model') || '';
+    const modelPath = getUrlQueryParam('m') || getUrlQueryParam('model') || 'https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/rio-ring3.glb';
 
     if (modelPath) {
         await viewer.load(modelPath);
