@@ -71,10 +71,10 @@ export async function setupTryOnViewer() {
     }
 
     // Load models
-    let ring1 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/ring1-not-rio.glb');
+    let ring1 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/rio-ring3.glb');
     // let ring2 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/ring3.glb');
-    let ring2 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/ring2.glb');
-    let ring4 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/ring4.glb');
+    let ring2 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/rio-ring2.glb');
+    let ring4 = await viewer.load('https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/rio-ring1.glb');
     ring1.visible = true;
     ring2.visible = false;
 
