@@ -100,7 +100,7 @@ export async function setupTryOnViewer() {
         shadow.userData.renderToDepth = false;
     });
 
-    const modelPath = getUrlQueryParam('m') || getUrlQueryParam('model') || 'https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/rio-new-mode-1.glb';
+    const modelPath = getUrlQueryParam('m') || getUrlQueryParam('model') || 'https://rio-assets.s3.eu-west-2.amazonaws.com/ar-rings-test/ring-1-correct.glb';
 
     if (modelPath) {
         await viewer.load(modelPath);
